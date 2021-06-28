@@ -5,17 +5,32 @@ EEGNet implementation in PyTorch. It implements only the latest to date version 
 
 **Original paper**: https://iopscience.iop.org/article/10.1088/1741-2552/aace8c
 
-    ---
-    EEGNet Parameters:
 
-      nb_classes      : int, number of classes to classify
-      Chans           : number of channels in the EEG data
-      Samples         : sample frequency (Hz) in the EEG data
-      dropoutRate     : dropout fraction
-      kernLength      : length of temporal convolution in first layer. 
-                        ARL recommends to set this parameter to be half of the sampling rate. 
-                        For the SMR dataset in particular since the data was high-passed at 4Hz ARL used a kernel length of 32.
-      F1, F2          : number of temporal filters (F1) and number of pointwise
-                        filters (F2) to learn. Default: F1 = 8, F2 = F1 * D.
-      D               : number of spatial filters to learn within each temporal
-                        convolution. Default: D = 2
+**Directory structure:**
+```
+./
+├── config
+│   ├── ConfigCheckpoints.py
+│   ├── ConfigDataset.py
+│   ├── ConfigEEGNet.py
+│   ├── ConfigHyperparams.py
+│   └── __init__.py
+├── data
+│   ├── Base_EEG_BCI_Dataset.py
+│   ├── EEG_BCI_doi10_6084_m9_figshare_c_3917698_v1.py
+│   └── __init__.py
+├── model
+│   ├── eegnet_pt.py
+│   ├── __init__.py
+│   └── SeparableConv.py
+└── run_experiment.py
+```
+
+./run_experiment.py - holds EEGNetTrain() class which makes all preparations before the training and fits the model. Supports checkpoints
+
+./model - holds EEGNet implementation and Separable and Depthwise convolution layers
+
+./data - holds wrappers for EEG BCI mental imagery datasets published here - https://doi.org/10.6084/m9.figshare.c.3917698.v1
+
+./config - holds different commandline argument configs for EEGNetTrain() class
+
