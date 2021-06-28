@@ -14,7 +14,7 @@ EEGNet implementation in PyTorch. It implements only the latest to date version 
       dropoutRate     : dropout fraction
       kernLength      : length of temporal convolution in first layer. 
                         ARL recommends to set this parameter to be half of the sampling rate. 
-                        For the SMR dataset in particular since the data was high-passed at 4Hz we used a kernel length of 32.
+                        For the SMR dataset in particular since the data was high-passed at 4Hz ARL used a kernel length of 32.
       F1, F2          : number of temporal filters (F1) and number of pointwise
                         filters (F2) to learn. Default: F1 = 8, F2 = F1 * D.
       D               : number of spatial filters to learn within each temporal
